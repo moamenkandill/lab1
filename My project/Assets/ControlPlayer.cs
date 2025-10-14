@@ -9,11 +9,13 @@ public float jumpHeight;
 
 public KeyCode Spacebar; 
 
-
+ public Transform groundcheck;
+ public float groundCheckRadius;
+ public LayerMask whatIsGround;
+ private bool grounded;
 public KeyCode L;
 public KeyCode R;
 
-    public Transform groundcheck;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,14 +43,11 @@ public KeyCode R;
         }
 
     }
-
+ 
     void Jump(){
-        GetComponent<Rigidbody2D>().velocity=new Vector2(GetComponent<Rigidbody2D>().velocity.x, jumpHeight);
-}
- public Transform groundcheck;
- public float groundCheckRadius;
- public LayerMask whatIsGround;
- private bool grounded;
+        GetComponent<Rigidbody2D>().velocity=new Vector2(GetComponent<Rigidbody2D>().velocity.x, jumpHeight);}
+
+
  
  void FixedUpdate(){
     grounded = Physics2D.OverlapCircle(groundcheck.position, groundCheckRadius,whatIsGround);
