@@ -15,16 +15,20 @@ public KeyCode Spacebar;
  private bool grounded;
 public KeyCode L;
 public KeyCode R;
+private Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        anim.SetFloat("speed",Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x));
+        anim.SetFloat("height", GetComponent<Rigidbody2D>().velocity.y);
+anim.SetBool("ground", grounded);
         if(Input.GetKeyDown(Spacebar)&& grounded){
             Jump();
         }
